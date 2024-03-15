@@ -550,7 +550,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-::selection {
-  color: #D4500F;
-}
