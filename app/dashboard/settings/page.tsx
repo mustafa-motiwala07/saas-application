@@ -6,16 +6,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 
 async function getData(userId: string) {
+    noStore();
     const data = await prisma.user.findUnique({
         where: {
             id: userId,
         },
         select: {
-            name: true,
+            name: true, 
             email: true,
             colorScheme: true,
         },
